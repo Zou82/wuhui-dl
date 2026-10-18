@@ -1,11 +1,11 @@
 {
   "appName": "无悔",
   "packageName": "com.wuhui.study",
-  "version": "1.0.1",
-  "versionCode": 2,
+  "version": "1.0.2",
+  "versionCode": 3,
   "releaseDate": "2026-10-18",
-  "sizeBytes": 12309851,
-  "sha256": "0d691a5ec3ee8361124ff42e5de111abd61392659ca3c6e1a11e0ae027fe1896",
+  "sizeBytes": 12314407,
+  "sha256": "6975e760831d5808ac2b67bff2b33d65e97f7da97bc14328787b4ddf255632bf",
   "signatureSha256": "1389a458b6d5178e8801af3402788d7b57a66d03d898b6ecb91b843fb3ed5a4b",
   "minAndroid": "8.0",
   "minSdk": 26,
@@ -13,8 +13,10 @@
   "downloadUrl": "https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk",
   "releaseUrl": "https://github.com/Zou82/wuhui-dl/releases/latest",
   "notes": [
-    "更换为正式品牌图标：三张错题卡（藏青/青绿/琥珀书签），含 Android 13+ 主题图标单色层",
-    "自适应图标按 70/108 安全区收敛，圆形/方圆/方形遮罩下均不被裁切",
-    "本版仅更新图标与版本号，功能与 v1.0.0 一致"
+    "拍题扫描重做：歪拍/反光/暗桌面也能把纸拉平；找不到边框会如实提示，不再假装已校正",
+    "新增「黑白 / 灰度」两档滤镜；修掉「照片太小」误报；增强更接近扫描件观感",
+    "AI 供应商「获取列表」现在真的联网拉取，失败会显示错误码与服务器原话",
+    "换模型后自动修正能力绑定；没有视觉模型的供应商不再假装「图片识别」已就绪",
+    "「测试」不再把推理模型（GLM-4.x / DeepSeek-Flash）误判为格式错误"
   ]
 }
