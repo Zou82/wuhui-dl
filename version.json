@@ -1,0 +1,20 @@
+{
+  "appName": "无悔",
+  "packageName": "com.wuhui.study",
+  "version": "1.0.0",
+  "versionCode": 1,
+  "releaseDate": "2026-10-18",
+  "sizeBytes": 12102179,
+  "sha256": "6693c734b6815621345d95052f954787143abcedbf8a74f62989ec5c02574e35",
+  "signatureSha256": "1389a458b6d5178e8801af3402788d7b57a66d03d898b6ecb91b843fb3ed5a4b",
+  "minAndroid": "8.0",
+  "minSdk": 26,
+  "downloadUrl": "https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk",
+  "releaseUrl": "https://github.com/Zou82/wuhui-dl/releases/latest",
+  "notes": [
+    "首个公开版本：拍题录入、错题本、遗忘曲线复习、AI 易错点分析与针对练习",
+    "图像扫描管线重构：四角检测失败契约、抗反光、光照分档增强、黑白/灰度两档",
+    "易错类与类级艾宾浩斯复习 + 每日时间预算（默认 30 分钟）",
+    "BYOK：17 类 AI 供应商，Key 存系统 Keystore，不进库、不进日志、不进备份"
+  ]
+}

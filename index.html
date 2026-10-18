@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>无悔 · 下载</title>
+<meta name="description" content="无悔 —— 拍照录错题、按遗忘曲线复习、AI 分析易错点的 Android 学习 App。">
+<style>
+  :root{
+    --ink:#111726; --sub:#5b6478; --line:#e6e9f0; --bg:#f6f7fb;
+    --brand:#3d5afe; --brand-dark:#2c46e0; --ok:#0f9d58; --warn:#b26a00;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.6;padding:24px 16px 48px}
+  .wrap{max-width:560px;margin:0 auto}
+  .hero{text-align:center;padding:28px 8px 20px}
+  .logo{width:84px;height:84px;border-radius:22px;margin:0 auto 16px;display:block;
+    background:linear-gradient(145deg,#5a76ff,#2c46e0);box-shadow:0 10px 30px rgba(61,90,254,.28);
+    position:relative}
+  .logo::after{content:"";position:absolute;inset:0;border-radius:22px;
+    background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.55),transparent 55%)}
+  .logo span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:34px;font-weight:700;letter-spacing:1px;z-index:1}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:1px}
+  .tagline{color:var(--sub);font-size:14px;margin:0}
+  .badge{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:5px 12px;
+    background:#eef1ff;color:var(--brand-dark);border-radius:999px;font-size:13px;font-weight:600}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px;
+    box-shadow:0 2px 10px rgba(17,23,38,.04)}
+  .btn{display:block;width:100%;padding:17px 20px;border-radius:14px;border:0;cursor:pointer;
+    background:var(--brand);color:#fff;font-size:17px;font-weight:700;letter-spacing:.5px;
+    box-shadow:0 8px 22px rgba(61,90,254,.3);transition:transform .06s ease,background .2s}
+  .btn:active{transform:scale(.985);background:var(--brand-dark)}
+  .btn small{display:block;font-weight:400;font-size:12px;opacity:.82;margin-top:3px;letter-spacing:0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .meta div{background:#fafbfe;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+  .meta dt{font-size:11px;color:var(--sub);margin:0 0 2px}
+  .meta dd{margin:0;font-size:14px;font-weight:600}
+  h2{font-size:15px;margin:26px 0 10px;letter-spacing:.5px}
+  ol,ul{margin:0;padding-left:20px;color:#33405c;font-size:14px}
+  li{margin:6px 0}
+  .hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;
+    word-break:break-all;color:var(--sub);background:#fafbfe;border:1px solid var(--line);
+    border-radius:9px;padding:9px 11px;margin-top:8px}
+  .qr{text-align:center}
+  .qr img{width:168px;height:168px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:8px}
+  .qr p{font-size:12px;color:var(--sub);margin:8px 0 0}
+  .overlay{position:fixed;inset:0;background:rgba(12,18,32,.82);display:none;
+    align-items:center;justify-content:center;padding:24px;z-index:99;backdrop-filter:blur(4px)}
+  .overlay.on{display:flex}
+  .overlay .box{background:#fff;border-radius:18px;padding:26px 22px;max-width:340px;text-align:center}
+  .overlay h3{margin:0 0 10px;font-size:17px}
+  .overlay p{color:var(--sub);font-size:14px;margin:0 0 18px}
+  .overlay .tip{font-size:13px;color:var(--brand-dark);background:#eef1ff;border-radius:10px;padding:10px;margin-bottom:16px}
+  .overlay button{width:100%;padding:13px;border-radius:12px;border:0;background:var(--brand);color:#fff;font-size:15px;font-weight:600}
+  .footer{text-align:center;color:var(--sub);font-size:12px;margin-top:28px;line-height:1.9}
+  .link{color:var(--brand-dark);text-decoration:none;border-bottom:1px solid rgba(61,90,254,.3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="logo"><span>无</span></div>
+    <h1>无悔</h1>
+    <p class="tagline">错过的题，不再重来</p>
+    <div class="badge">Android · v<span id="ver">1.0.0</span></div>
+  </div>
+
+  <div class="card">
+    <button class="btn" id="dl">下载 APK<small id="size">正在读取最新版本…</small></button>
+    <p id="iosTip" style="display:none;color:var(--warn);font-size:13px;margin:12px 0 0">
+      当前仅提供 Android 版本；iOS 暂未发布。
+    </p>
+    <dl class="meta">
+      <div><dt>版本</dt><dd id="m-ver">—</dd></div>
+      <div><dt>体积</dt><dd id="m-size">—</dd></div>
+      <div><dt>更新日期</dt><dd id="m-date">—</dd></div>
+      <div><dt>最低系统</dt><dd id="m-android">—</dd></div>
+    </dl>
+  </div>
+
+  <h2>安装步骤</h2>
+  <ol>
+    <li>点上方按钮开始下载（微信/QQ 内打开无法下载，需点右上角「⋯」→「在浏览器打开」）。</li>
+    <li>下载完成后点击安装，首次会提示「禁止安装未知应用」，允许当前浏览器安装。</li>
+    <li>已装旧版可直接覆盖安装（签名一致才行，否则需卸载重装并会丢数据）。</li>
+  </ol>
+
+  <h2>本版更新</h2>
+  <ul id="notes"><li>—</li></ul>
+
+  <h2>扫码下载</h2>
+  <div class="qr">
+    <img id="qr" src="qr.png" alt="下载二维码" width="168" height="168">
+    <p>用手机相机或浏览器扫一扫</p>
+  </div>
+
+  <h2>文件校验</h2>
+  <p style="font-size:13px;color:var(--sub);margin:0">SHA-256（下载后可核对，确保文件未被篡改）：</p>
+  <div class="hash" id="sha">—</div>
+  <div class="hash" id="sig" style="margin-top:6px">—</div>
+
+  <div class="footer">
+    全部数据只存本机 · AI 走 BYOK（自备 Key）· 无统计 SDK<br>
+    <a class="link" href="https://github.com/Zou82/wuhui-dl/releases" target="_blank" rel="noopener">历史版本</a>
+  </div>
+</div>
+
+<div class="overlay" id="wx">
+  <div class="box">
+    <h3>请用浏览器打开</h3>
+    <p>微信内置浏览器不支持下载安装包。</p>
+    <div class="tip">点右上角 <b>⋯</b> → <b>在浏览器打开</b></div>
+    <button id="wxOk">我知道了</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FALLBACK = {version:"1.0.0",sizeBytes:12102179,releaseDate:"2026-10-18",minAndroid:"8.0",
+    sha256:"6693c734b6815621345d95052f954787143abcedbf8a74f62989ec5c02574e35",
+    signatureSha256:"1389a458b6d5178e8801af3402788d7b57a66d03d898b6ecb91b843fb3ed5a4b",
+    downloadUrl:"https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk",notes:[]};
+
+  var ua = navigator.userAgent || "";
+  var isWeChat = /MicroMessenger/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var url = FALLBACK.downloadUrl;
+
+  function mb(n){ return (n/1048576).toFixed(1)+" MB"; }
+  function render(d){
+    url = d.downloadUrl || url;
+    document.getElementById('ver').textContent = d.version;
+    document.getElementById('m-ver').textContent = "v"+d.version;
+    document.getElementById('m-size').textContent = mb(d.sizeBytes);
+    document.getElementById('m-date').textContent = d.releaseDate;
+    document.getElementById('m-android').textContent = "Android "+d.minAndroid+"+";
+    document.getElementById('size').textContent = "v"+d.version+" · "+mb(d.sizeBytes)+" · 点击开始下载";
+    document.getElementById('sha').textContent = "APK SHA-256: "+(d.sha256||"—");
+    document.getElementById('sig').textContent = "证书 SHA-256: "+(d.signatureSha256||"—");
+    if (d.notes && d.notes.length){
+      document.getElementById('notes').innerHTML = d.notes.map(function(x){
+        return "<li>"+String(x).replace(/[<>&]/g,function(c){return ({'<':'&lt;','>':'&gt;','&':'&amp;'})[c];})+"</li>";
+      }).join("");
+    }
+    if (isIOS) document.getElementById('iosTip').style.display = "block";
+  }
+
+  document.getElementById('dl').addEventListener('click', function(){
+    if (isWeChat){ document.getElementById('wx').classList.add('on'); return; }
+    if (isIOS){ document.getElementById('iosTip').style.display = "block"; return; }
+    window.location.href = url;
+  });
+  document.getElementById('wxOk').addEventListener('click', function(){
+    document.getElementById('wx').classList.remove('on');
+  });
+
+  if (isWeChat) setTimeout(function(){ document.getElementById('wx').classList.add('on'); }, 350);
+  if (isIOS) document.getElementById('iosTip').style.display = "block";
+
+  render(FALLBACK);
+  fetch('version.json', {cache:'no-store'}).then(function(r){ return r.json(); })
+    .then(function(d){ if (d && d.version) render(d); }).catch(function(){});
+})();
+</script>
+</body>
+</html>
