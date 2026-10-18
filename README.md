@@ -7,9 +7,12 @@
 
 | 用途 | 链接 |
 |---|---|
-| **永久下载地址（始终最新版）** | <https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk> |
+| 🥇 **国内主通道（推荐，点开即下载）** | <https://www.pgyer.com/Android-wuhui> |
+| 🥈 海外/备用通道（GitHub 永久直链） | <https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk> |
 | 下载页（含版本信息与二维码） | <https://zou82.github.io/wuhui-dl/> |
 | 全部版本列表 | <https://github.com/Zou82/wuhui-dl/releases> |
+
+> 国内网络访问 GitHub 往往很慢甚至不可达，**优先发蒲公英那条**；GitHub 这条留给海外用户与版本存档。
 
 > 安装包文件名固定为 `wuhui.apk`，版本号在「Releases 说明」与 `version.json` 中标注——
 > 这样永久链接永远指向最新版，不需要每发一版就换链接。

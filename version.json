@@ -9,6 +9,7 @@
   "signatureSha256": "1389a458b6d5178e8801af3402788d7b57a66d03d898b6ecb91b843fb3ed5a4b",
   "minAndroid": "8.0",
   "minSdk": 26,
+  "domesticUrl": "https://www.pgyer.com/Android-wuhui",
   "downloadUrl": "https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk",
   "releaseUrl": "https://github.com/Zou82/wuhui-dl/releases/latest",
   "notes": [

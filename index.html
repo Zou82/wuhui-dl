@@ -69,7 +69,11 @@
   </div>
 
   <div class="card">
-    <button class="btn" id="dl">下载 APK<small id="size">正在读取最新版本…</small></button>
+    <button class="btn" id="dl">立即下载 APK<small id="size">正在读取最新版本…</small></button>
+    <p style="font-size:12px;color:var(--sub);margin:10px 0 0;text-align:center">
+      国内直连 · 点开即下载 ｜
+      <a class="link" id="ghLink" href="https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk" target="_blank" rel="noopener">海外备用通道</a>
+    </p>
     <p id="iosTip" style="display:none;color:var(--warn);font-size:13px;margin:12px 0 0">
       当前仅提供 Android 版本；iOS 暂未发布。
     </p>
@@ -119,20 +123,24 @@
 
 <script>
 (function(){
-  var FALLBACK = {version:"1.0.0",sizeBytes:12102179,releaseDate:"2026-10-18",minAndroid:"8.0",
-    sha256:"6693c734b6815621345d95052f954787143abcedbf8a74f62989ec5c02574e35",
+  var FALLBACK = {version:"1.0.1",sizeBytes:12309851,releaseDate:"2026-10-18",minAndroid:"8.0",
+    sha256:"0d691a5ec3ee8361124ff42e5de111abd61392659ca3c6e1a11e0ae027fe1896",
     signatureSha256:"1389a458b6d5178e8801af3402788d7b57a66d03d898b6ecb91b843fb3ed5a4b",
+    domesticUrl:"https://www.pgyer.com/Android-wuhui",
     downloadUrl:"https://github.com/Zou82/wuhui-dl/releases/latest/download/wuhui.apk",notes:[]};
 
   var ua = navigator.userAgent || "";
   var isWeChat = /MicroMessenger/i.test(ua);
   var isAndroid = /Android/i.test(ua);
   var isIOS = /iPhone|iPad|iPod/i.test(ua);
-  var url = FALLBACK.downloadUrl;
+  var url = FALLBACK.domesticUrl;          // 默认走国内主通道
 
   function mb(n){ return (n/1048576).toFixed(1)+" MB"; }
   function render(d){
-    url = d.downloadUrl || url;
+    url = d.domesticUrl || d.downloadUrl || url;   // 国内主通道优先
+    var gh = d.downloadUrl || FALLBACK.downloadUrl;
+    var a = document.getElementById('ghLink');
+    if (a) a.href = gh;
     document.getElementById('ver').textContent = d.version;
     document.getElementById('m-ver').textContent = "v"+d.version;
     document.getElementById('m-size').textContent = mb(d.sizeBytes);
